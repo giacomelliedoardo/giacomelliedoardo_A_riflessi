@@ -1,11 +1,14 @@
-int led1 = 7;
-int ledRosso = 2;
-int ledVerde = 4;
-int btn0 = 8;
-int btn1 = 10;
-int btn2 = 12;
-int buzzer = 13;
-int tempoLed = 0;
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+int led1        = 7;
+int ledRosso    = 2;
+int ledVerde    = 4;
+int btn0        = 8;
+int btn1        = 10;
+int btn2        = 12;
+int buzzer      = 13;
+int tempoLed    = 0;
 int tempoBuzzer = 0;
 
 void setup() {
@@ -17,10 +20,14 @@ void setup() {
   pinMode(btn1, INPUT);
   pinMode(btn2, INPUT);
   pinMode(buzzer, OUTPUT);
+  lcd.init();
+  lcd.backlight();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  lcd.setCursor(0, 0);
+  lcd.print ("Test iniziato");
   inizio();
   primoRiflesso();
   secondoRiflesso();
@@ -29,6 +36,8 @@ void loop() {
 
 void inizio() {
   while(digitalRead(btn0) != HIGH) {}
+  lcd.setCursor(0, 0);
+  lcd.print ("Test iniziato");
   tempoLed = 0;
   tempoBuzzer = 0;
   digitalWrite(ledVerde, LOW);
@@ -43,7 +52,7 @@ void primoRiflesso() {
     tempoLed++;
     delay(1);
   }
-  digitalWrite(led1, LOW); 
+  digitalWrite(led1, LOW);
 }
 
 void secondoRiflesso() {
