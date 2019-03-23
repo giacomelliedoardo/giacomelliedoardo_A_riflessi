@@ -27,7 +27,11 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   lcd.setCursor(0, 0);
-  lcd.print ("Test iniziato");
+  lcd.print("Premi il bottone");
+  lcd.setCursor(0, 1);
+  lcd.print("Inizia il test");
+  digitalWrite(ledVerde, LOW);
+  digitalWrite(ledRosso, LOW);
   inizio();
   primoRiflesso();
   secondoRiflesso();
@@ -36,12 +40,13 @@ void loop() {
 
 void inizio() {
   while(digitalRead(btn0) != HIGH) {}
-  lcd.setCursor(0, 0);
-  lcd.print ("Test iniziato");
   tempoLed = 0;
   tempoBuzzer = 0;
-  digitalWrite(ledVerde, LOW);
-  digitalWrite(ledRosso, LOW);
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Test iniziato");
+  delay(2000);
+  lcd.clear();
 }
 
 void primoRiflesso() {
@@ -53,6 +58,10 @@ void primoRiflesso() {
     delay(1);
   }
   digitalWrite(led1, LOW);
+  lcd.setCursor(0, 0);
+  lcd.print("Tempo 1:");
+  lcd.print(tempoLed);
+  lcd.print("ms");
 }
 
 void secondoRiflesso() {
@@ -64,13 +73,26 @@ void secondoRiflesso() {
     delay(1);
   }
   digitalWrite(buzzer, LOW);
+  lcd.setCursor(0, 1);
+  lcd.print("Tempo 2:");
+  lcd.print(tempoBuzzer);
+  lcd.print("ms");
 }
 
 void esito() {
   if (tempoLed <= 500 && tempoBuzzer <= 500) {
     digitalWrite(ledVerde, HIGH);
+    delay(3000);
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("TEST SUPERATO!");
   }
   else {
     digitalWrite(ledRosso, HIGH);
+    delay(3000);
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("NON SUPERATO");
   }
+  delay(2000);
 }
