@@ -26,7 +26,7 @@ void setup() {
   ledRosso    = 9;
   ledVerde    = 11;
   btn0        = 13;
-  btn1        = 1;
+  btn1        = 2;
   btn2        = 5;
   buzzer      = 6;
   tempoLed    = 0;
