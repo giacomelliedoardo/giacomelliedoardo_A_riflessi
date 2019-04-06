@@ -59,8 +59,9 @@ void loop() {
      digitalWrite(ledRosso, HIGH);
      delay(3000);
    }
-   else 
+   else{
      esito();
+   }
   }
   while(digitalRead(btn0) != HIGH) {}
 }
