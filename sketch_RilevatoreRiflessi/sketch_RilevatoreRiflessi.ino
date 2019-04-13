@@ -14,13 +14,6 @@ int tempoBuzzer;
 void setup() {
   // put your setup code here, to run once:
   //stabilisco variabili in input e output
-  pinMode(led1, OUTPUT);
-  pinMode(ledRosso, OUTPUT);
-  pinMode(ledVerde, OUTPUT);
-  pinMode(btn0, INPUT);
-  pinMode(btn1, INPUT);
-  pinMode(btn2, INPUT);
-  pinMode(buzzer, OUTPUT);
   
   led1        = 3;
   ledRosso    = 9;
@@ -28,9 +21,17 @@ void setup() {
   btn0        = 13;
   btn1        = 2;
   btn2        = 5;
-  buzzer      = 6;
+  buzzer      = 7;
   tempoLed    = 0;
   tempoBuzzer = 0;
+
+  pinMode(led1, OUTPUT);
+  pinMode(ledRosso, OUTPUT);
+  pinMode(ledVerde, OUTPUT);
+  pinMode(btn0, INPUT);
+  pinMode(btn1, INPUT);
+  pinMode(btn2, INPUT);
+  pinMode(buzzer, OUTPUT);
   
   lcd.init();
   lcd.backlight();
